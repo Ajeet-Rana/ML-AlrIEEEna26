@@ -3,7 +3,7 @@
 
 ---
 
-## 📌 Problem Statement
+## Problem Statement
 
 Binary classification task to predict whether an embedded device is operating normally or experiencing a fault condition based on 47 numerical sensor features.
 
@@ -17,7 +17,7 @@ Binary classification task to predict whether an embedded device is operating no
 
 ---
 
-## 🔍 Step 1 — Exploratory Data Analysis
+## Step 1 — Exploratory Data Analysis
 
 - **Class Distribution:** 60.5% Normal vs 39.5% Faulty — moderately imbalanced
 - **Missing Values:** None found — clean dataset
@@ -26,7 +26,7 @@ Binary classification task to predict whether an embedded device is operating no
 
 ---
 
-## 🧹 Step 2 — Data Cleaning
+## Step 2 — Data Cleaning
 
 | Action | Reason |
 |---|---|
@@ -38,7 +38,7 @@ Binary classification task to predict whether an embedded device is operating no
 
 ---
 
-## 🏆 Step 3 — Model Selection
+## Step 3 — Model Selection
 
 Trained 6 models on cleaned data to justify final model choice:
 
@@ -48,8 +48,8 @@ Trained 6 models on cleaned data to justify final model choice:
 | Decision Tree | ~93% | ~92% | Overfits, no boosting |
 | SVM | ~90% | ~89% | Slow, struggles with 40 features |
 | Random Forest | ~96% | ~95% | Good but no inter-tree learning |
-| **XGBoost** | **98.27%** | **97.84%** | ✅ Selected |
-| **LightGBM** | **98.29%** | **97.87%** | ✅ Selected |
+| **XGBoost** | **98.27%** | **97.84%** | Selected |
+| **LightGBM** | **98.29%** | **97.87%** | Selected |
 
 **Why XGBoost & LightGBM?**
 - Built for tabular/numerical data
@@ -60,7 +60,7 @@ Trained 6 models on cleaned data to justify final model choice:
 
 ---
 
-## ⚙️ Step 4 — Baseline Training
+## Step 4 — Baseline Training
 
 Both models trained with default parameters and `scale_pos_weight` to handle class imbalance:
 
@@ -75,7 +75,7 @@ scale_pos_weight = 26465 / 17311 ≈ 1.53
 
 ---
 
-## ⚡ Step 5 — Hyperparameter Tuning with Optuna
+## Step 5 — Hyperparameter Tuning with Optuna
 
 Used **Optuna TPE Sampler** (Bayesian Optimization) with 30 trials per model to find optimal hyperparameters.
 
@@ -95,7 +95,7 @@ Used **Optuna TPE Sampler** (Bayesian Optimization) with 30 trials per model to 
 
 ---
 
-## 🤝 Step 6 — Ensemble
+## Step 6 — Ensemble
 
 Combined both tuned models using **Soft Voting** (averaging predicted probabilities):
 
@@ -112,7 +112,7 @@ Final Class = 1 if probability >= 0.5 else 0
 
 ---
 
-## 📊 Final Results
+## Final Results
 
 | Metric | Score |
 |---|---|
@@ -125,7 +125,7 @@ Final Class = 1 if probability >= 0.5 else 0
 
 ---
 
-## 🔑 Top Features (by XGBoost Importance)
+## Top Features (by XGBoost Importance)
 
 | Rank | Feature | Importance |
 |---|---|---|
@@ -137,7 +137,7 @@ Final Class = 1 if probability >= 0.5 else 0
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Tool | Purpose |
 |---|---|
